@@ -7,9 +7,9 @@
 #define F_CPU 1600000
 #include "Display.h"
 #include "Control.h"
-#include "HAL/PIR Sensor/PIR.h"
-#include "MCAL/SPI/SPI.h"
-#include "HAL/Bluetooth hc-05/Bluetooth.h"
+#include "Atmega32-drivers/HAL/PIR Sensor/PIR.h"
+#include "Atmega32-drivers/MCAL/SPI/SPI.h"
+#include "Atmega32-drivers/HAL/Bluetooth hc-05/Bluetooth.h"
 
 int main(void)
 {
@@ -49,6 +49,13 @@ int main(void)
 				    LCD_WriteString("Welcome Yehia");
 					_delay_ms(1000);
 					LCD_clearScreen();
+					/* Disable the LCD from the first MCU 
+					  because the decond one will use it 
+					  */
+					Dio_WritePortDir('a',STD_IN);
+					Dio_WriteLowNibbleDir('b',STD_IN);
+					/*show the user the commands via Bluetooth
+					*/
 					UART_vidSendString("A for first LED\r\n");
 					UART_vidSendString("B for second LED \r\n");
 					UART_vidSendString("C for third LED \r\n");
