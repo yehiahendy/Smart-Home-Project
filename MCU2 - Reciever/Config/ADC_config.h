@@ -16,7 +16,7 @@
 * ADC_VoltageReference_AVCC_msk		 0b01000000
 * ADC_VoltageReference_2_56V_msk	 0b11000000
 **/
-#define Voltage_Reference_Selector   ADC_VoltageReference_AVCC_msk
+#define Voltage_Reference_Selector   ADC_VoltageReference_2_56V_msk
 
 /*=========================================================
  * ADC Adjust Result
@@ -67,7 +67,7 @@
 **/
 #define ADC_Trigger_Selector						ADC_Trigger_Free_Running_mode_msk
 
-#define ADC_VOLTAGE_REF_mv 							5000
+#define ADC_VOLTAGE_REF_mv 							2500
 /*
  * choose between 255, 1023
  * */

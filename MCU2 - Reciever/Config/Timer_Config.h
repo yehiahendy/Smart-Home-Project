@@ -20,7 +20,7 @@
  *========================================
 **/
  #define  Timer0_Mode_Selector			Timer_Mode_PWM_Pashe_correct_Msk
- #define  Timer2_Mode_Selector			Timer_Mode_CTC_Msk
+ #define  Timer2_Mode_Selector			Timer_Mode_PWM_Pashe_correct_Msk
  
 
 
@@ -131,7 +131,7 @@
   * Timer_Mode_PWM_Fast_OCR1A_Msk		OCR1A                
  
 *========================================*/
-  #define  TOP			0x00FF
+  #define  TOP			255
 
  /*========================================
   * Specification of timer equation 

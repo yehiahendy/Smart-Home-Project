@@ -17,6 +17,11 @@ void ADC_init(ADC_ch Channel)
 	//prescaler
 	ADCSRA &= ADC_Prescaler_clr_msk;
 	ADCSRA &= ADC_Prescaler_Selector;
+	//Enable ADC
+	SET_Bit(ADCSRA,ADEN);
+	//choose the channel
+	ADMUX &= 0b11100000;
+	ADMUX |= Channel;
 	//conversion mode
 	#if (ADC_Mode_Selector == ADC_AutoTrigging_msk)
 	SET_Bit(ADCSRA,ADATE);
@@ -24,14 +29,11 @@ void ADC_init(ADC_ch Channel)
 	SFIOR |= ADC_Trigger_Selector;
 	SET_Bit(ADCSRA,ADSC);
 	#endif
-		//Enable ADC
-		SET_Bit(ADCSRA,ADEN);
-		//choose the channel
-		ADMUX &= 0b11100000;
-		ADMUX |= Channel;
+
 }
 uint16 ADC_ReadChannel(ADC_ch Channel)
 {
+	uint16  val=0 ;
 	#if (ADC_Mode_Selector == ADC_SingleConversion_msk)
 	ADMUX &= 0b11100000;
 	ADMUX |= Channel;
@@ -41,7 +43,9 @@ uint16 ADC_ReadChannel(ADC_ch Channel)
 	{
 		;
 	}
-	return ADC;
+	SET_Bit(ADCSRA,ADIF);
+	val  = ADC;
+	return val;
 }
 void ADC_enInterrupt(void)
 {
