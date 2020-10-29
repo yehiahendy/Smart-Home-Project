@@ -8,16 +8,14 @@
 
 #ifndef TASK_FUNC_H_
 #define TASK_FUNC_H_
-#include "Atmega32-drivers/MCAL/SPI/SPI.h"
-#include "Atmega32-drivers/MCAL/DIO/DIO.h"
-#include "Atmega32-drivers/MCAL/ADC/ADC.h"
-#include "Atmega32-drivers/RTOS/FreeRTOS.h"
-#include "Atmega32-drivers/RTOS/task.h"
-#include "Atmega32-drivers/RTOS/queue.h"
+#include "MCAL/SPI/SPI.h"
+#include "MCAL/DIO/DIO.h"
+#include "MCAL/ADC/ADC.h"
+#include "RTOS/FreeRTOS.h"
+#include "RTOS/task.h"
+#include "RTOS/queue.h"
 void get_vidCommand(void *p);
 void Light_vidToggle(void *p);
 void Light_vidAdjust(void *p);
-
-
 
 #endif /* TASK_FUNC_H_ */
